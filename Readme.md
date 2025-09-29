@@ -11,8 +11,8 @@ Basic terminal knowledge
 Run the Task
 bash
 # Clone the repository
-git clone 
-cd k8s-troubleshoot-task
+git clone https://github.com/Tejasugale04/Xelron-AI
+cd Assignment_Xelron_AI
 
 # Build the Docker image
 docker build -t k8s-task .
@@ -25,9 +25,10 @@ docker run -it k8s-task ./run-tests.sh
 📋 Task Overview
 Domain: SRE/Infra (Kubernetes Troubleshooting)
 
+=================================================================================================================================================================
 Scenario: A simple nginx web service deployment is failing with crashing pods. Your task is to diagnose and fix the Kubernetes configuration issues.
 
-The Problem
+The Problem:
 The nginx deployment manifests have several issues causing pods to crash:
 
 Missing container command to run in foreground
@@ -35,8 +36,9 @@ Missing container command to run in foreground
 No resource limits specified
 
 Basic Kubernetes compatibility issues
+================================================================================================================================================
 
-Learning Objectives
+Learning Objectives:
 Diagnose Kubernetes pod failures
 
 Understand container runtime requirements
@@ -44,8 +46,9 @@ Understand container runtime requirements
 Fix deployment configuration issues
 
 Verify service accessibility
+====================================================================================================================================
 
-🏗️ Project Structure
+Project Structure
 text
 tasks/simple-k8s-fix/
 ├── Dockerfile              # Environment setup with k3d & kubectl
@@ -58,7 +61,9 @@ tasks/simple-k8s-fix/
 ├── tests/
 │   └── test_outputs.py    # Test suite (6 test cases)
 └── requirements.txt       # Python dependencies
-🧪 Test Suite
+========================================================================================================================
+
+Test Suite:
 The task includes 6 comprehensive tests:
 
 Pods Running - Verify all pods are in Running state
@@ -73,7 +78,9 @@ No CrashLoop - Verify no pods in crashloop backoff
 
 Deployment Healthy - Confirm successful rollout
 
-🛠️ Technical Details
+========================================================================================================
+
+Technical Details:
 Tools Used
 k3d: Lightweight Kubernetes distribution for testing
 
@@ -94,18 +101,28 @@ Resource Limits: Container resource management
 
 Probes: Container health checking
 
-🎯 How to Solve
+===============================================================================================================
+
+How to Solve:
 Step 1: Diagnose the Issue
 bash
-kubectl get pods                 # Check pod status
-kubectl describe pod <name>     # Get detailed pod information
-kubectl logs <pod-name>         # Check container logs
+kubectl get pods               
+kubectl describe pod <name>     
+kubectl logs <pod-name>  
+
+========
+
+
 Step 2: Identify Problems
 Containers need to run in foreground mode
 
 Resource limits prevent eviction
 
 Proper port configuration required
+
+
+
+======
 
 Step 3: Apply Fixes
 yaml
@@ -119,23 +136,49 @@ resources:
   limits:
     memory: "128Mi"
     cpu: "100m"
+
+
+===============
+
+    
 Step 4: Verify
 bash
-kubectl get pods                 # Should show "Running"
-curl http://localhost:30080     # Should return nginx page
+kubectl get pods                
+curl http://localhost:30080    
 kubectl rollout status deployment/nginx-deployment
-📊 Validation
+
+
+
+
+
+
+Validation:
 Baseline Test (Should Fail)
 bash
 docker run k8s-task bash -c "k3d cluster create test && kubectl apply -f manifests/ && sleep 20 && kubectl get pods"
+
+
+
+
+
 # Expected: Pods in CrashLoopBackOff state
 Solution Test (Should Pass)
 bash
 docker run k8s-task ./solution.sh
+
+
+
+
+
 # Expected: All pods Running, service accessible
 Test Suite
 bash
 docker run k8s-task ./run-tests.sh
+
+
+
+
+
 # Expected: All 6 tests pass
 🎓 Learning Outcomes
 After completing this task, you'll understand:
@@ -150,64 +193,8 @@ Service Networking: Exposing applications externally
 
 Resource Management: Setting appropriate limits
 
-🔧 Customization
-Modify Difficulty
-Add more complex issues (probes, volumes, env vars)
 
-Introduce networking problems
 
-Add multiple services with dependencies
 
-Extend Testing
-Add performance testing
-
-Include security checks
-
-Test rolling updates
-
-🤝 Contributing
-Fork the repository
-
-Create a feature branch
-
-Make your changes
-
-Add tests for new functionality
-
-Submit a pull request
-
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-🙏 Acknowledgments
-Inspired by Terminal-Bench AI evaluation framework
-
-k3d for lightweight Kubernetes testing
-
-Kubernetes community for best practices
-
-📞 Support
-If you encounter any issues or have questions:
-
-Check the Kubernetes Documentation
-
-Review k3d troubleshooting guide
-
-Open an issue on GitHub
-
-🏆 Skills Demonstrated
-Kubernetes administration
-
-Container troubleshooting
-
-YAML configuration
-
-CLI proficiency
-
-Automated testing
-
-Problem-solving methodology
-
-Happy Troubleshooting! 🎉
 
 
