@@ -1,3 +1,7 @@
++ Check The Code for troubleshooting in Readme.md file +
+
+
+
 Kubernetes Troubleshooting Task
 A terminal-based engineering task that simulates real-world Kubernetes debugging scenarios. This task is designed to test problem-solving skills in container orchestration environments.
 
