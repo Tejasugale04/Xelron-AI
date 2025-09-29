@@ -1,0 +1,28 @@
+context: |
+  A simple web service deployment is failing. The nginx pods are crashing immediately.
+  Find and fix the issues in the Kubernetes configuration files.
+
+objectives:
+  - "Find why the nginx pods are crashing"
+  - "Fix the deployment configuration"
+  - "Verify pods are running successfully"
+  - "Access the web service on port 30080"
+
+constraints:
+  max_agent_timeout_sec: 300
+  max_test_timeout_sec: 180
+  allowed_tools: ["kubectl", "curl", "cat", "vim"]
+
+acceptance_criteria:
+  - "All nginx pods are in Running state"
+  - "kubectl get pods shows 2/2 pods ready"
+  - "Web service responds on port 30080"
+  - "Deployment has correct number of replicas"
+
+inputs:
+  - "File: manifests/deployment.yaml"
+  - "File: manifests/service.yaml"
+
+outputs:
+  - "CLI: kubectl get pods shows Running state"
+  - "Service: http://localhost:30080 returns nginx page"
