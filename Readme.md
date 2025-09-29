@@ -9,8 +9,9 @@ Docker installed
 Basic terminal knowledge
 ============================================================
 Run the Task
+
 bash
-# Clone the repository
+Clone the repository
 git clone https://github.com/Tejasugale04/Xelron-AI
 cd Assignment_Xelron_AI
 
@@ -47,21 +48,6 @@ Fix deployment configuration issues
 
 Verify service accessibility
 ====================================================================================================================================
-
-Project Structure
-text
-tasks/simple-k8s-fix/
-├── Dockerfile              # Environment setup with k3d & kubectl
-├── task.yaml              # Task specification and requirements
-├── run-tests.sh           # Test runner script
-├── solution.sh            # Reference implementation
-├── manifests/
-│   ├── deployment.yaml    # Broken deployment (needs fixing)
-│   └── service.yaml       # NodePort service definition
-├── tests/
-│   └── test_outputs.py    # Test suite (6 test cases)
-└── requirements.txt       # Python dependencies
-========================================================================================================================
 
 Test Suite:
 The task includes 6 comprehensive tests:
